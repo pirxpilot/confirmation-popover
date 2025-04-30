@@ -1,10 +1,8 @@
 # Confirmation Popover
 
-  Popover confirmation component built on top of [Popover](http://github.com/component/popover).
+  Popover confirmation component built on top of [Popover](https://github.com/pirxpilot/popover).
 
-  ![js popover confirmation component](http://f.cl.ly/items/2H3a3C1M1k071z1B360I/Screen%20Shot%202012-08-06%20at%2012.16.59%20PM.png)
-
-  Live demo is [here](http://component.github.io/confirmation-popover/).
+  Live demo is [here](https://pirxpilot.github.io/confirmation-popover/).
 
 ## Installation
 
@@ -57,7 +55,7 @@ confirm.show(el);
 
 ### ...
 
-  View [Tip](http://github.com/component/tip) and [Popover](http://github.com/component/popover) for additional
+  View [Tip](https://github.com/pirxpilot/tip) and [Popover](https://github.com/pirxpilot/popover) for additional
   API documentation.
 
 ## License
