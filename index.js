@@ -1,4 +1,4 @@
-const Popover = require('@pirxpilot/popover');
+import Popover from '@pirxpilot/popover';
 
 /**
  * Initialize a `ConfirmationPopover` with the given `msg`
@@ -18,7 +18,7 @@ const template = `
 </div>
 `;
 
-class ConfirmationPopover extends Popover {
+export default class ConfirmationPopover extends Popover {
   constructor(msg, title) {
     super(template, title);
     this.classname = 'popover confirmation-popover';
@@ -135,9 +135,3 @@ class ConfirmationPopover extends Popover {
     return this;
   }
 }
-
-/**
- * Expose `ConfirmationPopover`.
- */
-
-module.exports = ConfirmationPopover;
