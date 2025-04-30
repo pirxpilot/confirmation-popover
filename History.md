@@ -1,4 +1,11 @@
 
+3.0.0 / 2025-04-30
+==================
+
+ * transition to ESM format
+ * fix links in Readme
+ * use `biome` as a linter and formatter
+
 2.0.1 / 2019-07-09
 ==================
 
