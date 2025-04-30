@@ -1,9 +1,4 @@
-
-/**
- * Module dependencies.
- */
-
-const Popover = require('@pirxpilot/popover');
+import Popover from '@pirxpilot/popover';
 
 /**
  * Initialize a `ConfirmationPopover` with the given `msg`
@@ -11,7 +6,6 @@ const Popover = require('@pirxpilot/popover');
  *
  * @param {Mixed} msg
  * @param {Mixed} title
- * @api public
  */
 
 const template = `
@@ -24,7 +18,7 @@ const template = `
 </div>
 `;
 
-class ConfirmationPopover extends Popover {
+export default class ConfirmationPopover extends Popover {
   constructor(msg, title) {
     super(template, title);
     this.classname = 'popover confirmation-popover';
@@ -52,7 +46,6 @@ class ConfirmationPopover extends Popover {
    * Emits "cancel".
    *
    * @param {Event} e
-   * @api private
    */
 
   oncancel(e) {
@@ -68,7 +61,6 @@ class ConfirmationPopover extends Popover {
    * Emits "ok".
    *
    * @param {Event} e
-   * @api private
    */
 
   onok(e) {
@@ -83,7 +75,6 @@ class ConfirmationPopover extends Popover {
    *
    * @param {String} msg
    * @return {ConfirmationPopover}
-   * @api public
    */
 
   confirmation(msg) {
@@ -98,7 +89,6 @@ class ConfirmationPopover extends Popover {
    *
    * @param {String} type
    * @return {ConfirmationPopover}
-   * @api public
    */
 
   focus(type) {
@@ -111,7 +101,6 @@ class ConfirmationPopover extends Popover {
    *
    * @param {String} text
    * @return {ConfirmationPopover}
-   * @api public
    */
 
   cancel(text) {
@@ -124,7 +113,6 @@ class ConfirmationPopover extends Popover {
    *
    * @param {String} text
    * @return {ConfirmationPopover}
-   * @api public
    */
 
   ok(text) {
@@ -138,7 +126,6 @@ class ConfirmationPopover extends Popover {
    * @param {jQuery|Element} el
    * @param {Function} fn
    * @return {ConfirmationPopover}
-   * @api public
    */
 
   show(el, fn = () => {}) {
@@ -148,9 +135,3 @@ class ConfirmationPopover extends Popover {
     return this;
   }
 }
-
-/**
- * Expose `ConfirmationPopover`.
- */
-
-module.exports = ConfirmationPopover;
