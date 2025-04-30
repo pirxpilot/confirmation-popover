@@ -12,7 +12,6 @@
       }
       a {
         display: inline-block;
-        float: left;
         border: 1px solid #eee;
         padding: 10px;
         color: black;
@@ -29,8 +28,8 @@
     <a href="#" id="auto">Auto</a>
     <a href="#" id="auto-title">Auto Title</a>
     <script>
-      var Popover = require('confirmation-popover');
-      require('@pirxpilot/popover').effect = 'fade';
+      var Popover = self['confirmation_popover'];
+      Popover.effect = 'fade';
 
       var confirm = new Popover('Are you sure?');
       confirm.show('#auto', function(ok){

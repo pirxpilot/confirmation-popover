@@ -1,17 +1,31 @@
+PROJECT=confirmation_popover
 CSS = node_modules/@pirxpilot/tip/tip.css \
 	build/aurora-tip.css \
 	popover.css
 
-all: build/build.js build/build.css build/aurora-tip.css
+all: check compile
+
+check: lint
+
+lint:
+	biome ci
+
+format:
+	biome check --fix
+
+compile: build/build.js build/build.css build/aurora-tip.css
 
 build:
-	@mkdir -p build
+	mkdir -p $@
 
 build/build.js: index.js | build node_modules
-	@browserify \
-		--require @pirxpilot/popover \
-		--require ./index.js:confirmation-popover \
-		--outfile build/build.js
+	esbuild \
+					--bundle \
+					--sourcemap \
+					--define:DEBUG="true" \
+					--global-name=$(PROJECT) \
+					--outfile=$@ \
+					index.js
 
 build/build.css: $(CSS) | build
 	cat $^ > $@
@@ -23,12 +37,13 @@ build/aurora-tip.css: | build
 		https://raw.githubusercontent.com/component/aurora-tip/master/aurora-tip.css
 
 node_modules: package.json
-	npm install
+	yarn
+	touch $@
 
 clean:
 	rm -fr build node_modules
 
-test: build build/build.css
+test: compile
 	@open test/index.html
 
-.PHONY: clean all test
+.PHONY: all check clean compile lint
