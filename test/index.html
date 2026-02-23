@@ -1,13 +1,13 @@
 <!DOCTYPE 5>
-<html>
+<html lang="en">
   <head>
     <title>ConfirmationPopover</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../build/build.css" />
     <style>
       body {
         padding: 60px;
-        font: 300 14px "Helvetica Neue", Helvetica, Arial;
+        font: 300 14px sans-serif;
         min-height: 1000px;
       }
       a {
@@ -28,18 +28,18 @@
     <a href="#" id="auto">Auto</a>
     <a href="#" id="auto-title">Auto Title</a>
     <script>
-      var Popover = self['confirmation_popover'].default;
+      const Popover = self.confirmation_popover.default;
       Popover.effect = 'fade';
 
-      var confirm = new Popover('Are you sure?');
-      confirm.show('#auto', function(ok){
+      let confirm = new Popover('Are you sure?');
+      confirm.show('#auto', (ok) => {
         console.log(ok ? 'ok' : 'cancel');
       });
 
-      var confirm = new Popover('This action cannot be undone.', 'Delete tobi?');
+      confirm = new Popover('This action cannot be undone.', 'Delete tobi?');
       confirm.focus('ok');
       confirm.ok('do it');
-      confirm.show('#auto-title', function(ok){
+      confirm.show('#auto-title', (ok) => {
         console.log(ok ? 'ok' : 'cancel');
       });
     </script>

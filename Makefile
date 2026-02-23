@@ -8,24 +8,24 @@ all: check compile
 check: lint
 
 lint:
-	biome ci
+	node_modules/.bin/biome ci
 
 format:
-	biome check --fix
+	node_modules/.bin/biome check --fix
 
 compile: build/build.js build/build.css build/aurora-tip.css
 
 build:
 	mkdir -p $@
 
-build/build.js: index.js | build node_modules
-	esbuild \
-					--bundle \
-					--sourcemap \
-					--define:DEBUG="true" \
-					--global-name=$(PROJECT) \
-					--outfile=$@ \
-					index.js
+build/build.js: index.js | build
+	node_modules/.bin/esbuild \
+		--bundle \
+		--sourcemap \
+		--define:DEBUG="true" \
+		--global-name=$(PROJECT) \
+		--outfile=$@ \
+		index.js
 
 build/build.css: $(CSS) | build
 	cat $^ > $@
@@ -36,12 +36,8 @@ build/aurora-tip.css: | build
 		--output $@ \
 		https://raw.githubusercontent.com/component/aurora-tip/master/aurora-tip.css
 
-node_modules: package.json
-	yarn
-	touch $@
-
 clean:
-	rm -fr build node_modules
+	rm -fr build
 
 test: compile
 	@open test/index.html
